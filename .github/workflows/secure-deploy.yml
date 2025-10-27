@@ -4,9 +4,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  # Moved to job-level env
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
     steps:
-      - uses: actions/checkout@v4  # Updated from v2 to v4
+      - uses: actions/checkout@v4  
       - name: Scan dependencies
         uses: snyk/actions/node@master
         with:
