@@ -1,0 +1,13 @@
+name: Secure Deploy
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  # Moved to job-level env
+    steps:
+      - uses: actions/checkout@v4  # Updated from v2 to v4
+      - name: Scan dependencies
+        uses: snyk/actions/node@master
+        with:
+          args: --severity-threshold=high
